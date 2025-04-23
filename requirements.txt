@@ -1,0 +1,18 @@
+# Streamlit for the web app framework
+streamlit==1.44.1
+
+# Data manipulation
+pandas==2.2.3
+numpy==2.2.5
+
+# Visualization
+plotly==5.20.0
+
+# Finance data API
+yfinance==0.2.38
+
+# HTTP requests
+requests==2.32.3
+
+# Time utilities
+python-dateutil==2.9.0.post0
