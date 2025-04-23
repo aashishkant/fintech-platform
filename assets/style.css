@@ -1,0 +1,480 @@
+/* Import a luxurious font with a wide range of weights */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Define theme variables for a premium look */
+:root {
+    /* Default to dark mode (futuristic neon vibes) */
+    --background-color: #0a0e1f; /* Deep cosmic blue */
+    --card-background: rgba(255, 255, 255, 0.08); /* Subtle frosted glass */
+    --text-color: #d4d4d8; /* Soft zinc white */
+    --header-color: #f4f4f5; /* Bright white for headers */
+    --accent-color: #a78bfa; /* Neon lavender */
+    --accent-hover: #8b5cf6; /* Deeper lavender on hover */
+    --highlight-color: #22d3ee; /* Neon cyan for highlights */
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --sidebar-bg: rgba(10, 14, 31, 0.96); /* Dark cosmic blue for sidebar */
+    --sidebar-text-color: #f4f4f5; /* Bright white for sidebar text */
+    --sidebar-highlight-color: #22d3ee;
+    --gradient-bg: linear-gradient(135deg, #a78bfa, #22d3ee); /* Neon gradient */
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.2);
+    --input-text: #d4d4d8;
+}
+
+/* Light mode variables (pastel elegance) */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #f5f5f4; /* Soft ivory */
+        --card-background: rgba(255, 255, 255, 0.9); /* Almost solid white */
+        --text-color: #2d3748; /* Dark slate gray */
+        --header-color: #1f2937; /* Slightly darker slate for headers */
+        --accent-color: #60a5fa; /* Pastel blue */
+        --accent-hover: #3b82f6; /* Deeper blue on hover */
+        --highlight-color: #10b981; /* Pastel green for highlights */
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --border-color: rgba(0, 0, 0, 0.08);
+        --sidebar-bg: #d1d5db; /* Darker slate gray for better contrast */
+        --sidebar-text-color: #1f2937; /* Dark slate for readability */
+        --sidebar-highlight-color: #10b981;
+        --gradient-bg: linear-gradient(135deg, #60a5fa, #34d399); /* Pastel gradient */
+        --input-bg: rgba(0, 0, 0, 0.02);
+        --input-border: rgba(0, 0, 0, 0.15);
+        --input-text: #2d3748;
+    }
+}
+
+/* Global typography settings */
+.stApp {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--background-color);
+    background-image: radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.15), transparent 70%);
+    color: var(--text-color);
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 1440px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Smooth scrolling and box-sizing */
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Sidebar styling */
+.sidebar .sidebar-content {
+    background: var(--sidebar-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+/* Sidebar headings */
+.sidebar h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6 {
+    color: var(--sidebar-text-color);
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-shadow: 0 1px 3px var(--shadow-color);
+    transition: color 0.3s ease;
+}
+
+/* Sidebar paragraphs */
+.sidebar p {
+    color: var(--sidebar-text-color);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.7;
+    text-shadow: 0 1px 2px var(--shadow-color);
+    transition: color 0.3s ease;
+}
+
+/* Sidebar buttons */
+.sidebar .stButton button {
+    width: 100%;
+    background: var(--gradient-bg);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar .stButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-color);
+    opacity: 0.95;
+}
+
+.sidebar .stButton button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    opacity: 0.85;
+}
+
+.sidebar .stButton button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+}
+
+.sidebar .stButton button:hover::after {
+    left: 100%;
+}
+
+/* Market Pulse section */
+.sidebar .stMarkdown:has(> p:contains("MARKET PULSE")) {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: light) {
+    .sidebar .stMarkdown:has(> p:contains("MARKET PULSE")) {
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+.sidebar .stMarkdown p:contains("MARKET PULSE") {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--sidebar-highlight-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Updated timestamp and source */
+.sidebar .stMarkdown p:contains("Updated") {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sidebar-text-color);
+    opacity: 0.85;
+}
+
+/* Source link */
+.sidebar .stMarkdown p:contains("Source") a {
+    color: var(--sidebar-highlight-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.sidebar .stMarkdown p:contains("Source") a:hover {
+    color: var(--accent-color);
+}
+
+/* Info boxes (used for Market Pulse) */
+.stAlert {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+@media (prefers-color-scheme: light) {
+    .stAlert {
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+/* Inputs, sliders, and dropdowns */
+.stTextInput > div > div > input,
+.stNumberInput > div > div > input,
+.stDateInput > div > div > input,
+.stSelectbox > div > div > div {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--input-text);
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.stTextInput > div > div > input:focus,
+.stNumberInput > div > div > input:focus,
+.stDateInput > div > div > input:focus,
+.stSelectbox > div > div > div:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+    outline: none;
+}
+
+/* Sliders */
+.stSlider > div > div > div > div {
+    background: var(--accent-color) !important;
+    border-radius: 8px;
+}
+
+.stSlider > div > div > div > div > div {
+    background: var(--highlight-color) !important;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Metric cards */
+.metric-card {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+    position: relative;
+    backdrop-filter: blur(8px);
+    overflow: hidden;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-bg);
+}
+
+/* Financial metrics */
+.financial-metric {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--highlight-color);
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 1px 3px var(--shadow-color);
+}
+
+/* Chart containers */
+.chart-container {
+    background: var(--card-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+/* General buttons */
+.stButton button {
+    background: var(--gradient-bg);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-color);
+    opacity: 0.95;
+}
+
+.stButton button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    opacity: 0.85;
+}
+
+.stButton button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.5s ease;
+}
+
+.stButton button:hover::after {
+    left: 100%;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--header-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-shadow: 0 1px 3px var(--shadow-color);
+    transition: color 0.3s ease;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2rem;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3 { font-size: 1.5rem; }
+
+/* Paragraphs */
+p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1rem;
+    font-weight: 400;
+    text-shadow: 0 1px 1px var(--shadow-color);
+    transition: color 0.3s ease;
+}
+
+/* Custom styles for Streamlit metrics */
+.stMetric {
+    padding: 0.5rem;
+    border-radius: 8px;
+    background: var(--card-background);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    backdrop-filter: blur(8px);
+}
+
+/* Style for delta (percentage change) in metrics */
+.stMetric [data-testid="stMetricDelta"] {
+    color: var(--highlight-color);
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stApp {
+        padding: 1rem;
+    }
+
+    .metric-card {
+        padding: 1rem;
+        margin: 0.75rem 0;
+    }
+
+    .chart-container {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .financial-metric {
+        font-size: 1.5rem;
+    }
+
+    .stButton button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .sidebar .stButton button {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+    .stApp {
+        padding: 0.5rem;
+    }
+
+    .metric-card {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+    }
+
+    .chart-container {
+        padding: 0.75rem;
+    }
+
+    .financial-metric {
+        font-size: 1.25rem;
+    }
+
+    .stButton button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .sidebar .stButton button {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.1rem; }
+}
