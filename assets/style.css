@@ -17,31 +17,66 @@
     --sidebar-text-color: #f4f4f5; /* Bright white for sidebar text */
     --sidebar-highlight-color: #22d3ee;
     --gradient-bg: linear-gradient(135deg, #a78bfa, #22d3ee); /* Neon gradient */
+    --gradient-text: linear-gradient(135deg, #a78bfa, #22d3ee); /* Gradient for text */
     --input-bg: rgba(255, 255, 255, 0.05);
     --input-border: rgba(255, 255, 255, 0.2);
     --input-text: #d4d4d8;
+    --metal-card-bg: rgba(255, 255, 255, 0.1); /* Slightly lighter for metal cards */
+    --metal-card-border: linear-gradient(135deg, #ffd700, #c0c0c0); /* Gold to silver gradient */
+    --positive-color: #10b981; /* Green for positive metrics */
+    --negative-color: #ef4444; /* Red for negative metrics */
 }
 
 /* Light mode variables (pastel elegance) */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #f5f5f4; /* Soft ivory */
-        --card-background: rgba(255, 255, 255, 0.9); /* Almost solid white */
-        --text-color: #2d3748; /* Dark slate gray */
-        --header-color: #1f2937; /* Slightly darker slate for headers */
-        --accent-color: #60a5fa; /* Pastel blue */
-        --accent-hover: #3b82f6; /* Deeper blue on hover */
-        --highlight-color: #10b981; /* Pastel green for highlights */
-        --shadow-color: rgba(0, 0, 0, 0.1);
-        --border-color: rgba(0, 0, 0, 0.08);
-        --sidebar-bg: #d1d5db; /* Darker slate gray for better contrast */
-        --sidebar-text-color: #1f2937; /* Dark slate for readability */
-        --sidebar-highlight-color: #10b981;
-        --gradient-bg: linear-gradient(135deg, #60a5fa, #34d399); /* Pastel gradient */
-        --input-bg: rgba(0, 0, 0, 0.02);
-        --input-border: rgba(0, 0, 0, 0.15);
-        --input-text: #2d3748;
+        --background-color: #f8fafc; /* Light cool tone */
+        --card-background: #ffffff; /* Pure white cards */
+        --text-color: #334155; /* Slate for better readability */
+        --header-color: #1e293b; /* Dark slate for headers */
+        --accent-color: #6366f1; /* Indigo */
+        --accent-hover: #4f46e5; /* Deeper indigo on hover */
+        --highlight-color: #0ea5e9; /* Sky blue for highlights */
+        --shadow-color: rgba(0, 0, 0, 0.08);
+        --border-color: rgba(0, 0, 0, 0.06);
+        --sidebar-bg: #f1f5f9; /* Light gray for sidebar */
+        --sidebar-text-color: #334155; /* Dark slate for sidebar text */
+        --sidebar-highlight-color: #0ea5e9;
+        --gradient-bg: linear-gradient(135deg, #6366f1, #0ea5e9); /* Pastel gradient */
+        --gradient-text: linear-gradient(135deg, #6366f1, #0ea5e9); /* Gradient for text */
+        --input-bg: #ffffff;
+        --input-border: rgba(0, 0, 0, 0.1);
+        --input-text: #334155;
+        --metal-card-bg: #ffffff; /* White for metal cards */
+        --metal-card-border: linear-gradient(135deg, #ffd700, #94a3b8); /* Gold to slate gradient */
+        --positive-color: #10b981; /* Green for positive metrics */
+        --negative-color: #ef4444; /* Red for negative metrics */
     }
+}
+
+/* Force light mode class for testing or user preference */
+.light-mode {
+    --background-color: #f8fafc; 
+    --card-background: #ffffff;
+    --text-color: #334155;
+    --header-color: #1e293b;
+    --accent-color: #6366f1;
+    --accent-hover: #4f46e5;
+    --highlight-color: #0ea5e9;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --border-color: rgba(0, 0, 0, 0.06);
+    --sidebar-bg: #f1f5f9;
+    --sidebar-text-color: #334155;
+    --sidebar-highlight-color: #0ea5e9;
+    --gradient-bg: linear-gradient(135deg, #6366f1, #0ea5e9);
+    --gradient-text: linear-gradient(135deg, #6366f1, #0ea5e9);
+    --input-bg: #ffffff;
+    --input-border: rgba(0, 0, 0, 0.1);
+    --input-text: #334155;
+    --metal-card-bg: #ffffff;
+    --metal-card-border: linear-gradient(135deg, #ffd700, #94a3b8);
+    --positive-color: #10b981;
+    --negative-color: #ef4444;
 }
 
 /* Global typography settings */
@@ -50,7 +85,9 @@
     font-size: 16px;
     line-height: 1.6;
     background: var(--background-color);
-    background-image: radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.15), transparent 70%);
+    background-image: radial-gradient(circle at 50% 50%, 
+                      color-mix(in srgb, var(--accent-color) 15%, transparent), 
+                      transparent 70%);
     color: var(--text-color);
     margin: 0 auto;
     padding: 2rem;
@@ -67,6 +104,16 @@ html {
 
 *, *:before, *:after {
     box-sizing: inherit;
+}
+
+/* Main content area styling */
+.main .block-container {
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--card-background) 20%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
 }
 
 /* Sidebar styling */
@@ -163,12 +210,6 @@ html {
     transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-    .sidebar .stMarkdown:has(> p:contains("MARKET PULSE")) {
-        background: rgba(0, 0, 0, 0.03);
-    }
-}
-
 .sidebar .stMarkdown p:contains("MARKET PULSE") {
     font-size: 1.1rem;
     font-weight: 700;
@@ -209,12 +250,6 @@ html {
     transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-    .stAlert {
-        background: rgba(0, 0, 0, 0.03);
-    }
-}
-
 /* Inputs, sliders, and dropdowns */
 .stTextInput > div > div > input,
 .stNumberInput > div > div > input,
@@ -235,7 +270,7 @@ html {
 .stDateInput > div > div > input:focus,
 .stSelectbox > div > div > div:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     outline: none;
 }
 
@@ -279,15 +314,115 @@ html {
     background: var(--gradient-bg);
 }
 
+/* Specific styles for Metals & Forex cards */
+.metal-card {
+    background: var(--metal-card-bg);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 20px var(--shadow-color);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    margin: 0.75rem 0;
+    position: relative;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+/* Apply gradient border for metal cards */
+.metal-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: var(--metal-card-border);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.metal-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--shadow-color);
+}
+
+.metal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-bg);
+    opacity: 0.05;
+    transition: opacity 0.3s ease;
+}
+
+.metal-card:hover::before {
+    opacity: 0.1;
+}
+
 /* Financial metrics */
 .financial-metric {
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--highlight-color);
-    background: var(--gradient-bg);
+    position: relative;
+    z-index: 1;
+}
+
+/* Gradient text for financial metrics */
+.financial-metric {
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Metric label styling */
+.metal-card .stMetric label,
+.stMetric label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--header-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Metric value styling */
+.metal-card .stMetric div[data-testid="stMetricValue"],
+.stMetric div[data-testid="stMetricValue"] {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--header-color);
     text-shadow: 0 1px 3px var(--shadow-color);
+    position: relative;
+}
+
+/* Add gradient effect to metric values */
+.metal-card .stMetric div[data-testid="stMetricValue"],
+.stMetric div[data-testid="stMetricValue"] {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Metric delta styling - improved visibility in light mode */
+.metal-card .stMetric div[data-testid="stMetricDelta"],
+.stMetric div[data-testid="stMetricDelta"] {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--positive-color);
+    opacity: 0.95;
+}
+
+/* Make negative deltas red */
+.metal-card .stMetric div[data-testid="stMetricDelta"]:has(span.negative),
+.stMetric div[data-testid="stMetricDelta"]:has(span.negative) {
+    color: var(--negative-color);
 }
 
 /* Chart containers */
@@ -362,14 +497,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 2.5rem;
-    background: var(--gradient-bg);
+    position: relative;
+    display: inline-block;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 h2 {
     font-size: 2rem;
-    background: var(--gradient-bg);
+    position: relative;
+    display: inline-block;
+    background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -395,10 +534,37 @@ p {
     backdrop-filter: blur(8px);
 }
 
-/* Style for delta (percentage change) in metrics */
-.stMetric [data-testid="stMetricDelta"] {
-    color: var(--highlight-color);
-    font-weight: 500;
+/* Fix for Streamlit expanders */
+.stExpander {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.stExpander > div:first-child {
+    background-color: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stExpander > div:last-child {
+    background-color: var(--card-background);
+}
+
+/* Style for checkboxes */
+.stCheckbox > div > label > div {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+}
+
+/* Style for radio buttons */
+.stRadio > div {
+    background-color: transparent;
+}
+
+.stRadio > div > div > label > div:first-child {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
 }
 
 /* Footer */
@@ -411,13 +577,100 @@ p {
     opacity: 0.7;
 }
 
+/* Fix for code blocks in light mode */
+.stCodeBlock {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-radius: 8px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .stCodeBlock {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+}
+
+/* Improvements for data display */
+.dataframe {
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.dataframe thead th {
+    background-color: var(--card-background) !important;
+    color: var(--header-color) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem !important;
+    text-align: left !important;
+}
+
+.dataframe tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.dataframe tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+@media (prefers-color-scheme: light) {
+    .dataframe tbody tr:nth-child(odd) {
+        background-color: rgba(0, 0, 0, 0.02) !important;
+    }
+    
+    .dataframe tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+}
+
+/* Specifically for market indices display */
+.index-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.index-value-up {
+    color: var(--positive-color);
+}
+
+.index-value-down {
+    color: var(--negative-color);
+}
+
+.index-value-neutral {
+    color: var(--text-color);
+}
+
+.index-value {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.index-change {
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
 /* Responsive design */
+@media (max-width: 1200px) {
+    .stApp {
+        padding: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .stApp {
         padding: 1rem;
     }
 
     .metric-card {
+        padding: 1rem;
+        margin: 0.75rem 0;
+    }
+
+    .metal-card {
         padding: 1rem;
         margin: 0.75rem 0;
     }
@@ -429,6 +682,18 @@ p {
 
     .financial-metric {
         font-size: 1.5rem;
+    }
+
+    .metal-card .stMetric label {
+        font-size: 1rem;
+    }
+
+    .metal-card .stMetric div[data-testid="stMetricValue"] {
+        font-size: 1.3rem;
+    }
+
+    .metal-card .stMetric div[data-testid="stMetricDelta"] {
+        font-size: 0.85rem;
     }
 
     .stButton button {
@@ -444,6 +709,10 @@ p {
     h1 { font-size: 2.25rem; }
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.25rem; }
+    
+    .main .block-container {
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -456,12 +725,29 @@ p {
         margin: 0.5rem 0;
     }
 
+    .metal-card {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+    }
+
     .chart-container {
         padding: 0.75rem;
     }
 
     .financial-metric {
         font-size: 1.25rem;
+    }
+
+    .metal-card .stMetric label {
+        font-size: 0.9rem;
+    }
+
+    .metal-card .stMetric div[data-testid="stMetricValue"] {
+        font-size: 1.1rem;
+    }
+
+    .metal-card .stMetric div[data-testid="stMetricDelta"] {
+        font-size: 0.8rem;
     }
 
     .stButton button {
@@ -477,4 +763,14 @@ p {
     h1 { font-size: 1.75rem; }
     h2 { font-size: 1.5rem; }
     h3 { font-size: 1.1rem; }
+    
+    .main .block-container {
+        padding: 0.75rem;
+    }
+}
+
+/* Special utility class for enforcing high contrast text for accessibility */
+.high-contrast-text {
+    color: var(--header-color);
+    font-weight: 500;
 }

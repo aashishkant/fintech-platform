@@ -1,9 +1,13 @@
 import streamlit as st
+import os
 from components.loan_calculator import render_loan_calculator
 from components.portfolio_viewer import render_portfolio_viewer
 from components.market_insights import render_market_insights
 from components.portfolio_analytics import render_portfolio_analytics
 from components.tax_calculator import render_tax_calculator
+
+# ✅ Confirm app startup
+st.write("✅ App started successfully.")
 
 # Page configuration (must be first Streamlit command)
 st.set_page_config(
@@ -13,9 +17,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load custom CSS
-with open('assets/style.css') as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# Load custom CSS safely
+css_path = 'assets/style.css'
+if os.path.exists(css_path):
+    with open(css_path) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+else:
+    st.warning("⚠️ CSS file not found at assets/style.css. Using default styles.")
 
 # Main header
 st.markdown("""
