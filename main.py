@@ -6,16 +6,16 @@ from components.market_insights import render_market_insights
 from components.portfolio_analytics import render_portfolio_analytics
 from components.tax_calculator import render_tax_calculator
 
-# ✅ Confirm app startup
-st.write("✅ App started successfully.")
-
-# Page configuration (must be first Streamlit command)
+# Page configuration — MUST be first Streamlit command
 st.set_page_config(
     page_title="Fingyan - Indian Financial Powerhouse",
     page_icon="💰",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# ✅ Confirm app startup
+st.write("✅ App started successfully.")
 
 # Load custom CSS safely
 css_path = 'assets/style.css'
